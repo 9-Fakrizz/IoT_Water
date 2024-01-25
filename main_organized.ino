@@ -165,3 +165,16 @@ void Read_ph_temp() {
   Serial.println(" *C");
   Serial.println("");
 }
+
+// Read Turbidity
+void Read_turb(){
+  turb_avg = 0;
+  for(int i = 0; i < 500 ; i++){
+    turb = analogRead(34);
+    turb_avg += turb;
+  }
+  turb_avg = turb_avg / 500;
+  turb_avg = map(turb_avg, 0, 15, 0, 10);
+  Serial.println("Turbdt : " + String(turb_avg)); 
+  turb_send = turb; 
+}
